@@ -76,9 +76,9 @@ userRouter.post("/login", async(req,res)=>{
 })
 userRouter.delete("/delete", async(req, res) => {
     try {
-        const {email} = req.body;
+        const {userId} = req.body;
         const user = await User.findOne({
-            email
+            _id:userId
         })
         if(!user){
             return res.status(400).json("User not found")
