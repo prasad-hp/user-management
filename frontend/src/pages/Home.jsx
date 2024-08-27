@@ -67,21 +67,15 @@ const Home = () => {
     };
 
     const handleLogout = () => {
-        console.log('Logged out');
+        localStorage.removeItem("token")
         navigate("/login")
     };
 
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <nav className="navbar navbar-expand-lg navbar-light bg-light flex justify-between px-5">
                 <a className="navbar-brand" href="#">User Management</a>
-                <div className="collapse navbar-collapse">
-                    <ul className="navbar-nav ml-auto">
-                        <li className="nav-item">
-                            <button className="btn btn-outline-danger" onClick={handleLogout}>Logout</button>
-                        </li>
-                    </ul>
-                </div>
+                <button className="btn btn-outline-danger" onClick={handleLogout}>Logout</button>
             </nav>
 
             <div className="container mt-5">

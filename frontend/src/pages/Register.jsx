@@ -18,9 +18,14 @@ const Register = () => {
             alert(response.data.message);
             if(response.data.message == "User Created Successfully"){
                 navigate("/home")
+                localStorage.setItem("token", "Bearer"+ response.data.token)
             }
         } catch (err) {
-            alert(err.response.data.message || "An error occured");
+            const errorMessage = err.response?.data?.message ||
+                     err.response?.data?.message?.issues?.[0]?.message ||
+                     "An error occurred";
+            alert(errorMessage);
+
         }
     };
 

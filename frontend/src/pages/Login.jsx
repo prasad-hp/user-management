@@ -16,10 +16,11 @@ const Login = () => {
             alert(response.data.message);
             if(response.data.message == "Logged In"){
                 navigate("/home")
+                localStorage.setItem("token", "Bearer"+ response.data.token)
             }
         } catch (err) {
+            alert(err.response.data.message|| err.response.data?.message?.issues[0]?.message || "An error occured");
             console.log(err)
-            alert(err.response.data.message?.issues[0]?.message || "An error occured");
         }
     };
 
